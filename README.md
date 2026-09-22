@@ -127,11 +127,11 @@ At least one property must be supplied, otherwise the node throws an error.
 
 #### Set Delete Flag
 
-Marks an object for deletion.
+Marks one or more objects for deletion in a single API call. All objects share the same `DeleteReason`, `IncludeSubItems` and `DeleteReasonText`.
 
 | Parameter | Required | Description |
 |---|---|---|
-| **ObjectId** | Yes | Numeric ID of the object |
+| **ObjectId** | Yes | Numeric ID of the object, or several IDs as a comma-separated list (e.g. `123,456,789`) |
 | **DeleteReason** | Yes | Reason: `Other` (0), `Invalid` (1), `Duplicate` (2), `Test` (3), `Expired` (4), `Data Privacy Protection` (5) |
 | **IncludeSubItems** | Yes | Whether to also mark child objects for deletion (default: `false`) |
 | **DeleteReasonText** | No | Free-text reason description |

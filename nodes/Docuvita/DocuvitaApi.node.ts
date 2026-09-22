@@ -389,13 +389,33 @@ export class DocuvitaApi implements INodeType {
 						const delete_reason_text = this.getNodeParameter('deletereasontext', i) as string;
 						//console.log(delete_reason_text)
 
-						const body_data: IDataObject = {
-							deleteflagelements: {
-								objectid: obj_id,
+						const obj_ids: number[] = [];
+
+						obj_id.toString().split(',').forEach((id: string) => {
+							if (id.trim() != '') {
+								if (isNaN(Number(id))) {
+									throw new NodeOperationError(this.getNode(), `ObjectId must only contain numeric IDs: ${id.trim()}`);
+								}
+								obj_ids.push(Number(id));
+							}
+						});
+						//console.log(obj_ids)
+
+						if (obj_ids.length == 0) {
+							throw new NodeOperationError(this.getNode(), `No ObjectId specified!`);
+						}
+
+						const delete_flag_elements = obj_ids.map(function (id) {
+							return {
+								objectid: id,
 								deletereason: delete_reason,
 								includesubitems: include_subitems,
 								deletereasontext: delete_reason_text,
-							},
+							}
+						});
+
+						const body_data: IDataObject = {
+							deleteflagelements: delete_flag_elements,
 							sessionguid: my_session,
 						}
 
