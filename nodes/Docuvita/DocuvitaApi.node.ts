@@ -407,7 +407,7 @@ export class DocuvitaApi implements INodeType {
 						}
 
 						responseData = await this.helpers.httpRequest(options_delete)
-						return [this.helpers.returnJsonArray(responseData)]
+						returnData.push(responseData);
 					}
 
 					/* ******************************************************* */
