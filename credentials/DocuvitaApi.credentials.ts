@@ -8,7 +8,7 @@ export class DocuvitaApi implements ICredentialType {
     name = 'docuvitaApi';
     displayName = 'Docuvita API';
     documentationUrl = 'http://www.docuvita.com';
-    icon = 'file:docuvita_circle_white_cmyk.svg' as Icon;
+    icon = 'file:../nodes/Docuvita/docuvita_circle_white_cmyk.svg' as Icon;
     properties: INodeProperties[] = [
         {
             displayName: 'Service-URL',

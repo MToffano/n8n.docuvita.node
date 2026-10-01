@@ -67,7 +67,6 @@ export const objectFields: INodeProperties[] = [
 				operation: [
 					'getobject',
 					'getobjectproperties',
-					'setdeleteflag',
 					'uploadnewversion',
 					'setobjectproperties',
 				],
@@ -78,6 +77,24 @@ export const objectFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The object\'s ID',
+	},
+	{
+		displayName: 'ObjectId',
+		name: 'objectid',
+		required: true,
+		type: 'string' as const,
+		displayOptions: {
+			show: {
+				operation: [
+					'setdeleteflag',
+				],
+				resource: [
+					'object',
+				],
+			},
+		},
+		default: '',
+		description: 'The object\'s ID, or several IDs as a comma-separated list',
 	},
 	{
 		displayName: 'VersionComment',
